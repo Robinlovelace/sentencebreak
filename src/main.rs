@@ -5,8 +5,8 @@ use std::fs;
 fn main() {
     // Read command-line arguments
     let args: Vec<String> = env::args().collect();
-    if args.len() != 2 {
-        println!("Usage: sentencebreak <input-file>");
+    if args.len() < 2 || args.len() > 4 {
+        println!("Usage: sentencebreak <input-file> [-o <output-file>]");
         return;
     }
     let input_file = &args[1];
@@ -23,8 +23,12 @@ fn main() {
     // Add line breaks after each sentence
     let output_text = add_line_breaks(&input_text);
 
-    // Write modified text to a new file
-    let output_file = format!("{}_modified.txt", input_file);
+    // Write modified text to the specified output file or default to a modified input file
+    let output_file: String = if args.len() == 4 && args[2] == "-o" {
+        args[3].clone()
+    } else {
+        format!("{}_modified.txt", input_file)
+    };
     match fs::write(&output_file, output_text) {
         Ok(_) => println!("Modified text written to {}", output_file),
         Err(err) => println!("Error writing output file: {}", err),
