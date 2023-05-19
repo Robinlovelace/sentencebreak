@@ -2,6 +2,14 @@
 name = "sentencebreak"
 version = "0.1.0"
 edition = "2021"
+authors = ["Your Name <rob00x@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "A tool to add sentence breaks to text."
+readme = "README.md"
+homepage = "https://github.com/robinlovelace/sentencebreak"
+repository = "https://github.com/robinlovelace/sentencebreak"
+keywords = ["cli", "breaks", "markdown", "text"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
