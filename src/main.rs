@@ -32,7 +32,7 @@ fn main() {
 }
 
 fn add_line_breaks(text: &str) -> String {
-    let re = Regex::new(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)(?!\s)(\s*)").unwrap();
+    let re = Regex::new(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)(?!\s|\se\.g\.)(\s*)").unwrap();
     re.replace_all(text, "$1\n").to_string()
 }
 
