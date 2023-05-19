@@ -47,10 +47,10 @@ mod tests {
         assert_eq!(add_line_breaks(input_text), expected_output);
     }
 
-    // #[test]
-    // fn test_add_line_breaks_with_eg_pattern() {
-    //     let input_text = "This is another with e.g. many periods? This is a third e.g.";
-    //     let expected_output = "This is another with e.g. many periods?\nThis is a third e.g.";
-    //     assert_eq!(add_line_breaks(input_text), expected_output);
-    // }
+    #[test]
+    fn test_add_line_breaks_with_eg_pattern() {
+        let input_text = "This is another with e.g. many periods? This is a third e.g.";
+        let expected_output = "This is another with e.g. many periods?\nThis is a third e.g.";
+        assert_eq!(add_line_breaks(input_text), expected_output);
+    }
 }
