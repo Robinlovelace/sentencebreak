@@ -23,13 +23,13 @@ fn main() {
     // Add line breaks after each sentence
     let output_text = add_line_breaks(&input_text);
 
-    // Write modified text to the specified output file or default to a modified input file
-    let output_file: String = if args.len() == 4 && args[2] == "-o" {
-        args[3].clone()
+    // Write modified text to the specified output file or overwrite the input file
+    let output_file = if args.len() == 4 && args[2] == "-o" {
+        &args[3]
     } else {
-        format!("{}_modified.txt", input_file)
+        input_file
     };
-    match fs::write(&output_file, output_text) {
+    match fs::write(output_file, output_text) {
         Ok(_) => println!("Modified text written to {}", output_file),
         Err(err) => println!("Error writing output file: {}", err),
     }
