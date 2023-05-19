@@ -30,6 +30,14 @@ sentencebreak README.md -o README_sentencebreaks.md
 
 ## Installation
 
+To install the tool, run:
+
+```bash
+cargo install sentencebreak
+```
+
+To install the latest version from GitHub, run:
+
 ```bash
 cargo install --git https://github.com/robinlovelace/sentencebreak
 ```
