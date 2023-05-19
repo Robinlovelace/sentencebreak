@@ -32,8 +32,8 @@ fn main() {
 }
 
 fn add_line_breaks(text: &str) -> String {
-    let re = Regex::new(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)(\s*)").unwrap();
-    re.replace_all(text, "$0\n").to_string()
+    let re = Regex::new(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)(?!\s)(\s*)").unwrap();
+    re.replace_all(text, "$1\n").to_string()
 }
 
 #[cfg(test)]
@@ -44,6 +44,13 @@ mod tests {
     fn test_add_line_breaks() {
         let input_text = "This is a sentence. This is another sentence? This is a third sentence.";
         let expected_output = "This is a sentence.\nThis is another sentence?\nThis is a third sentence.";
+        assert_eq!(add_line_breaks(input_text), expected_output);
+    }
+
+    #[test]
+    fn test_add_line_breaks_with_eg_pattern() {
+        let input_text = "This is another with e.g. many periods? This is a third e.g.";
+        let expected_output = "This is another with e.g. many periods?\nThis is a third e.g.";
         assert_eq!(add_line_breaks(input_text), expected_output);
     }
 }
